@@ -27,8 +27,8 @@ export default function Reports() {
     }
   }
 
-  const maxMonthly = monthly.length ? Math.max(...monthly.map((m) => m.total)) : 1
-  const maxCategory = categories.length ? Math.max(...categories.map((c) => c.total)) :1
+  const maxMonthly = monthly.length ? Math.max(...monthly.map((m) => Number(m.total))) : 1
+  const maxCategory = categories.length ? Math.max(...categories.map((c) => Number(c.total))) :1
   const totalSpend = categories.reduce((sum, c) => sum + Number(c.total), 0)
 
   if (loading) return (
@@ -89,7 +89,7 @@ export default function Reports() {
                     <div
                       className="chart-bar-fill"
                       style={{
-                        width: `${(m.total / maxMonthly) * 100}%`,
+                        width: `${(Number(m.total) / Number(maxMonthly)) * 100}%`,
                         background: '#378ADD',
                       }}
                     />
@@ -122,7 +122,7 @@ export default function Reports() {
                       <div
                         className="chart-bar-fill"
                         style={{
-                          width: `${(cat.total / maxCategory) * 100}%`,
+                          width: `${(Number(cat.total) / Number(maxCategory)) * 100}%`,
                           background: '#1D9E75',
                         }}
                       />
