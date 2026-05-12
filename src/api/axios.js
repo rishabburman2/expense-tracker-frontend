@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // Base URL points to deployed Render API
-const BASE_URL = 'https://expense-tracker-api-qcdw.onrender.com'
+const BASE_URL = import.meta.env.VITE_API_URL || 'https://expense-tracker-api-qcdw.onrender.com'
 
 const api = axios.create({
     baseURL: BASE_URL,
